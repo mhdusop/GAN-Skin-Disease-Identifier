@@ -1,5 +1,7 @@
+import { ImageUpload } from "./view/SkinDiseaseView";
+
 function App() {
-   return;
+   return <ImageUpload />;
 }
 
 export default App;
