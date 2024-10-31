@@ -1,17 +1,10 @@
 import { useState } from "react";
 
-// Komponen utama untuk halaman unggah gambar
 export const ImageUpload = () => {
-   const [image, setImage] = useState(null);
    const [preview, setPreview] = useState(null);
-
-   if (!image) {
-      return;
-   }
 
    const handleImageChange = (e) => {
       const file = e.target.files[0];
-      setImage(file);
       if (file) {
          const reader = new FileReader();
          reader.onloadend = () => {
