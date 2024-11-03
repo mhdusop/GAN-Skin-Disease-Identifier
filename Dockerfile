@@ -13,7 +13,7 @@ RUN git clone -b backend https://github.com/mhdusop/GAN-Skin-Disease-Identifier.
 RUN ls -l /backend
 
 # Install dependencies dari requirements.txt
-RUN pip install -r requirements.txt
+# RUN pip install -r requirements.txt
 
 # Expose port untuk backend (misalnya 5000)
 EXPOSE 5000
