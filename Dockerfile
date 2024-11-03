@@ -25,5 +25,5 @@ COPY . .
 # Expose port 5000 untuk backend
 EXPOSE 5000
 
-# Jalankan aplikasi backend
-CMD ["python", "app.py"]
+# Jalankan aplikasi backend dengan Gunicorn
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
