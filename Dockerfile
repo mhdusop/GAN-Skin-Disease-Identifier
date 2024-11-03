@@ -10,12 +10,19 @@ WORKDIR /backend
 # Clone branch backend dari repository
 RUN git clone -b backend https://github.com/mhdusop/GAN-Skin-Disease-Identifier.git .
 
+# Tampilkan daftar file untuk verifikasi
 RUN ls -l /backend
 
-# Install dependencies dari requirements.txt
-# RUN pip install -r requirements.txt
+# Salin requirements.txt dari konteks build ke dalam container
+COPY requirements.txt requirements.txt
 
-# Expose port untuk backend (misalnya 5000)
+# Install dependencies dari requirements.txt
+RUN pip install -r requirements.txt
+
+# Salin semua file ke dalam container
+COPY . .
+
+# Expose port 5000 untuk backend
 EXPOSE 5000
 
 # Jalankan aplikasi backend
