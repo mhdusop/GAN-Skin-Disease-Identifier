@@ -3,9 +3,12 @@ from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
+from flask_cors import CORS
 import io
 
 app = Flask(__name__)
+
+CORS(app)
 
 # Load the pre-trained model
 model = load_model('model/skin_disease_classifier.h5')
