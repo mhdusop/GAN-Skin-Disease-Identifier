@@ -1,0 +1,25 @@
+version: '1.0'
+services:
+  frontend:
+    image: frontend-image:latest
+    build:
+      context: https://github.com/mhdusop/GAN-Skin-Disease-Identifier.git#frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - mynetwork
+
+  backend:
+    image: backend-image:latest
+    build:
+      context: https://github.com/mhdusop/GAN-Skin-Disease-Identifier.git#backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
