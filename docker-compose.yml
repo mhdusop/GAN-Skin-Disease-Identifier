@@ -6,7 +6,7 @@ services:
       context: https://github.com/mhdusop/GAN-Skin-Disease-Identifier.git#frontend
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "3000:3000"
     networks:
       - mynetwork
 
