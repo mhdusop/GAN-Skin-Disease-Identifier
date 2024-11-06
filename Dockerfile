@@ -24,4 +24,4 @@ COPY --from=frontend /frontend/dist /usr/share/nginx/html
 EXPOSE 3000
 
 # Jalankan nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD sed -i 's/listen 80/listen 3000/' /etc/nginx/conf.d/default.conf && nginx -g "daemon off;"
