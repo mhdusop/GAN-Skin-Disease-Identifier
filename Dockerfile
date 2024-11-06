@@ -21,7 +21,7 @@ FROM nginx:1.21-alpine AS production
 COPY --from=frontend /frontend/dist /usr/share/nginx/html
 
 # Expose port 80 untuk frontend
-EXPOSE 80
+EXPOSE 3000
 
 # Jalankan nginx
 CMD ["nginx", "-g", "daemon off;"]
