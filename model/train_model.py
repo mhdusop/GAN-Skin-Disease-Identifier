@@ -60,7 +60,7 @@ model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accur
 # Train the model
 model.fit(
     train_generator,
-    epochs=10,
+    epochs=50,
     validation_data=validation_generator
 )
 

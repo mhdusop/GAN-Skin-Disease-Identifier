@@ -4,7 +4,6 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 from flask_cors import CORS
-import io
 
 app = Flask(__name__)
 
@@ -14,7 +13,7 @@ CORS(app)
 model = load_model('model/skin_disease_classifier.h5')
 
 # Define class labels based on the dataset
-class_labels = ['kurap', 'kudis']  # Replace with actual labels in order
+class_labels = ['Biduran', 'Keloid', 'Kurap', 'Melanoma', 'Vitiligo']  # Replace with actual labels in order
 
 # Endpoint for prediction
 @app.route('/api/predict', methods=['POST'])
@@ -29,12 +28,17 @@ def predict():
     image = np.array(image) / 255.0  # Normalize the image
     image = np.expand_dims(image, axis=0)  # Expand dimensions to fit model input
 
-    # Make a prediction
+    # make prediction
     predictions = model.predict(image)
-    predicted_class = class_labels[np.argmax(predictions)]
+    predicted_class_index = np.argmax(predictions)
+    predicted_class = class_labels[predicted_class_index]
+    confidence = predictions[0][predicted_class_index]
 
     # Send response
-    return jsonify({'disease': predicted_class})
+    return jsonify({
+        'disease': predicted_class,
+        'confidence': float(confidence)
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
